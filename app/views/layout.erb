@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <% if session[:user_id] %>
+    <% username = User.find(session[:user_id]).username %>
+    <a href="/user/<%= username %>">Your Profile</a> <a href="/logout">Log Out</a>
+  <% else %>
+    <a href="/user/new">Sign Up</a> <a href="/login">Login</a>
+  <% end %>
+  <p><a href='/'>Index</a>
+  <%= yield %>
+</body>
+</html>

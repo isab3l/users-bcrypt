@@ -1,0 +1,8 @@
+<div class="container">
+	<h1><%= User.find(@user_id).username %>'s profile</h1>
+	<% if @user_id == session[:user_id] %>
+		This is your profile!
+	<% else %>
+		You are not logged in as this user!
+	<% end %>
+</div>
